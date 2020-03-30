@@ -1,0 +1,23 @@
+---
+- name: Install HTTP Play
+  hosts: all
+  tasks:
+  - name:  Install HTTPd service
+    yum:
+      name: httpd
+      state: present
+  - name: Start and enable
+    service:
+      name: httpd
+      enabled: yes
+      state: started
+  - name: Create content
+    copy:
+      content: "Welcome in Borsa"
+      dest: /var/www/html/index.html
+  - name: Open port 80
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+...
