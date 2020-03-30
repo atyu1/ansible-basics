@@ -1,0 +1,17 @@
+---
+- name: Openstack Prparation Play
+  hosts: all
+  tasks:
+  - name: Disable Network Manager
+    service:
+      name: NetworkManager
+      enabled: False
+      state: stopped
+  - name: Update grub to use old network device name (eth)
+    lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX='
+      line: 'GRUB_CMDLINE_LINUX="rd.lvm.lv=centos/root rd.lvm.lv=centos/swap rhgb quiet net.ifnames=0 biosdevname=0"'
+  - name: Apply Grub config
+    command: grub2-mkconfig -o /boot/grub2/grub.cfg
+...
