@@ -1,0 +1,15 @@
+---
+- name: simple FTP install
+  hosts: all
+  tasks:
+  - name: install vsftpd
+    yum: name=vsftpd
+  - name: enable vsftpd
+    service: name=vsftpd enabled=true
+  - name: create init file
+    copy:
+      content: "Local FTP for IT department"
+      dest: /var/ftp/pub/README
+      force: no
+      mode: 0444
+...
