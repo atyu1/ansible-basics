@@ -7,35 +7,34 @@
 ```ansible-playbook playbook.yml -i inventory -e "package=postgres"``` 
 
 
-### Other Notes
-- General
-.yml file is a playbook
-It can contain multiple plays.
-Every play has multiple tasks
+## Other Notes
+#### General
 
-- Variables
+- .yml file is a playbook
+- It can contain multiple plays.
+- Every play has multiple tasks
 
-Create in a dedicated file or in inventory or in play
-Reffer to it via "{{ var_name  }}"
+#### Variables
 
-- Include
+- Create in a dedicated file or in inventory or in play
+- Reffer to it via "{{ var_name  }}"
 
-`include` can be used per Task to add external yaml, split to multiple files
-`include_vars` include variables to playbook from external JSON or YAML file
+#### Include
 
+- `include` can be used per Task to add external yaml, split to multiple files
+- `include_vars` include variables to playbook from external JSON or YAML file
 
-- Facts
+#### Facts
 
-Contains discovered info about the host
-We can use it for checks when we need to apply some config based on host model/config
-Module setup used
-```ansible <hostname> -m setup```
+- Contains discovered info about the host
+- We can use it for checks when we need to apply some config based on host model/config
+- Module setup used `ansible <hostname> -m setup`
 
-Custom config/facts can be added by creating file in /etc/ansible/facts.d with .fact extension file
-It will be showned as "ansible_local" part
+- Custom config/facts can be added by creating file in /etc/ansible/facts.d with .fact extension file
+- It will be showned as "ansible_local" part
 
-Filtering output for facts can be done by -a 'filter=...'
-```ansible <hostname> -m setup -a filter='ansible_kernel'```
+- Filtering output for facts can be done by -a 'filter=...'
+- Example: `ansible <hostname> -m setup -a filter='ansible_kernel'`
 
 Example:
 ```
