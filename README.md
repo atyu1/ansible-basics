@@ -8,6 +8,22 @@
 
 
 ### Other Notes
+- General
+.yml file is a playbook
+It can contain multiple plays.
+Every play has multiple tasks
+
+- Variables
+
+Create in a dedicated file or in inventory or in play
+Reffer to it via "{{ var_name  }}"
+
+- Include
+
+`include` can be used per Task to add external yaml, split to multiple files
+`include_vars` include variables to playbook from external JSON or YAML file
+
+
 - Facts
 
 Contains discovered info about the host
