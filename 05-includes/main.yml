@@ -1,0 +1,16 @@
+---
+- name: Deploy it
+  hosts: all
+  include_vars: packages.yml
+  tasks:
+  - name: Read the task1.yml
+    vars:
+      package: "{{ packages.web }}"
+      service: http
+      state: started
+    register: msg
+
+  - name: Outputs
+    debug:
+      var: msg
+...
